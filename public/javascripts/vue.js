@@ -14,6 +14,8 @@ var app = new Vue({
     },
     methods: {
         createorlog(){
+            this.usernameinput = "";
+            this.passwordinput = "";
             this.accountcreated = false;
             this.login = false;
             this.createaccount = false;
@@ -109,6 +111,7 @@ var app = new Vue({
         async makeuserpost() {
             var text = this.userposttext;
             if(text == ""){
+                alert("Your InstaTwit was empty! Enter some text in the box");
                 return;
             }
             var url = "http://cs260.andrewhulterstrom.com:3001/submituserpost";

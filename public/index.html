@@ -2,13 +2,15 @@
 
 <head>
   <title>InstaTwit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="/stylesheets/style.css">
   <link href="https://fonts.googleapis.com/css?family=Knewave|Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <div class="topbar" style="display: flex; justify-content: space-evenly">
+  <div class="topbar" style="display: flex;">
     <h1>InstaTwit</h1>
     <h2>The social network for those who don't need 280 characters</h2>
   </div>
@@ -16,17 +18,18 @@
 
   <div style="display:flex">
 
-    <div class="container" style="display:flex">
+    <div class="mycontainer" style="display:flex">
       <div id="app" style="display:flex;margin: auto; height:100%; flex-direction: column; flex:1">
 
 
 
         <div v-show="loggedin">
           <div id="userinput" class="content">
-            <h3>Tell the world what it needs to hear in 28 characters. You can use {{remainingchars}} more characters.</h3><br>
-            <div style="display:flex; justify-content:space-between;margin-bottom:1em">
-              <input type="text" v-model="userposttext" maxlength="28">
-              <button type="submit" v-on:click.prevent="makeuserpost">InstaTwit!</button>
+            <h3>Tell the world what it needs to hear in 28 characters.</h3><br>
+            <p>You can use {{remainingchars}} more characters.</p>
+            <div class="instatwitdiv" style="display:flex; justify-content:space-between;margin-bottom:1em">
+              <input class="logininputbox" type="text" v-model="userposttext" maxlength="28">
+              <button class="bigbutton" type="submit" v-on:click.prevent="makeuserpost">InstaTwit!</button>
             </div>
           </div>
           <br><br>
@@ -37,13 +40,13 @@
               <div class="content">
                 <div class="postinfo">
                   <div style="display:flex">
-                  <p style="font-size:larger">Name: {{item.name}} </p>
-                  <p style="font-size:small">Posted {{item.ago}}</p>
+                    
+                    <p style="font-size:small">{{item.ago}}</p>
                   </div>
                   <p>{{item.date}}</p>
                 </div>
                 <div class="posttext">
-                <p class="twit"> {{item.text}} </p>
+                  <p style="font-size:larger">{{item.name}} says: </p><p class="twit"> {{item.text}} </p>
                 </div>
               </div>
             </div>
@@ -55,41 +58,45 @@
           <div v-if="createaccount" style="flex-direction:column">
 
             <div>
-              <h3 style="margin:auto;">Please enter a Username and Password:</h3>
+              <h3>Please enter a Username and Password:</h3>
             </div>
-            <div style="flex-direction:column;display:block;margin:auto">
+            <div class="logininputdiv">
               <p>Username: </p>
-              <input type="text" v-model="usernameinput">
+              <input class="logininputbox" type="text" v-model="usernameinput">
+            </div>
+            <div class="logininputdiv">
               <p>Password: (Do not use a real password)</p>
-              <input type="text" v-model="passwordinput">
+              <input class="logininputbox" type="password" v-model="passwordinput">
             </div>
             <div>
-              <div style="margin:auto">
-                <input type="button" class="bigbutton" v-on:click.prevent="createorlog" value="Back">
+              <div class="buttonsdiv" style="margin:auto">
                 <input type="button" class="bigbutton" v-on:click.prevent="createAccount" value="Create Account">
+                <input type="button" class="bigbutton" v-on:click.prevent="createorlog" value="Back">
               </div>
             </div>
           </div>
           <div v-else-if="login" style="flex-direction:column">
             <div>
-              <h3 style="margin:auto;">Please log in:</h3>
+              <h3>Please log in:</h3>
             </div>
-            <div style="flex-direction:column;display:block;margin:auto">
+            <div class="logininputdiv">
               <p>Username:</p>
-              <input type="text" v-model="usernameinput">
+              <input class="logininputbox" type="text" v-model="usernameinput">
+            </div>
+            <div class="logininputdiv">
               <p>Password:</p>
-              <input type="text" v-model="passwordinput">
+              <input  class="logininputbox" type="password" v-model="passwordinput">
             </div>
             <div>
-              <div style="margin:auto">
-                <input type="button" class="bigbutton" v-on:click.prevent="createorlog" value="Back">
+              <div class="buttonsdiv" style="margin:auto">
                 <input type="button" class="bigbutton" v-on:click.prevent="checkCredentials" value="Log In">
+                <input type="button" class="bigbutton" v-on:click.prevent="createorlog" value="Back">
               </div>
             </div>
           </div>
           <div v-else-if="accountcreated" style="flex-direction:column">
             <div>
-              <h3 style="margin:auto;">Account created successfully!</h3>
+              <h3 style="margin:auto">Account created successfully!</h3>
             </div>
             <div style="margin:auto">
               <input type="button" class="bigbutton" value="Continue" v-on:click.prevent="createorlog">
@@ -100,7 +107,7 @@
               <div>
                 <h3 style="margin:auto">Please create an account or log in:</h3>
               </div>
-              <div style="display:flex;justify-content: center">
+              <div class="buttonsdiv" style="display:flex;justify-content: center">
                 <input class="bigbutton" type="button" value="Log In" v-on:click.prevent="showlogin">
                 <input class="bigbutton" type="button" value="Create Account" v-on:click.prevent="showcreateaccount">
               </div>
