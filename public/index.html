@@ -1,0 +1,64 @@
+<html>
+
+<head>
+  <title>InstaTwit</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Knewave|Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="topbar" style="display: flex; justify-content: space-evenly">
+    <h1>InstaTwit</h1>
+    <h2>The social media network for those who don't need 280 characters</h2>
+  </div>
+  
+  
+  <div style="display:flex">
+
+    <div class="container">
+      <div id="app" style="display:flex;margin: auto; height:100%; flex-direction: column">
+
+
+        <div id="userinput" class="content">
+          <h3>Tell the world what it needs to hear</h3><br>
+          <div style="display:flex; justify-content:space-between;margin-bottom:1em">
+          <input type="text" v-model="userposttext">
+          <button type="submit" v-on:click.prevent="makeuserpost">Twit!</button>
+          </div>
+        </div>
+        <br><br>
+
+        <div id="postsdisplay">
+
+          <div v-for="item in posts" class="content">
+            <p>Name: {{item.name}} </p>
+            <p>{{item.date}}</p>
+            <p>Posted {{item.ago}}</p>
+            <p class="twit"> {{item.text}} </p>
+          </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
+  <script src="javascripts/script.js"></script>
+  <script src="javascripts/vue.js"></script>
+  <script src="javascripts/moment.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+body {
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  background: linear-gradient(105deg, #5f2c80 0%, #49a09d 100%);
+  width: 100%;
+}
+
+a {
+  color: #00B7FF;
+}
+li{
+  margin-bottom: 10px;
+}
+.topbar{
+  
+  background-color: #ffffff;
+  padding: 30px;
+    -webkit-box-shadow: 0px 0px 110px -30px rgba(0,0,0,0.6);
+  -moz-box-shadow: 0px 0px 110px -30px rgba(0,0,0,0.6);
+  box-shadow: 0px 0px 110px -30px rgba(0,0,0,0.6);
+}
+h1{
+  font-family: 'Knewave', cursive;
+  font-weight: normal;
+  font-size: 4em;
+  display: inline-block;
+  align-self: center;
+}
+h2{
+  display: inline-block;
+  float: right;
+  align-self: center;
+}
+#userinput{
+  
+  padding: 30px;
+}
+.container{
+  /*background-color: #ffffff;*/
+  width: 80vw;
+  min-height: 60vh;
+  border-radius: 30px;
+  margin: 10vh 10vw;
+  overflow: hidden;
+  padding: 15px;
+  -webkit-box-shadow: 0px 0px 110px -30px rgba(0,0,0,0.6);
+  -moz-box-shadow: 0px 0px 110px -30px rgba(0,0,0,0.6);
+  box-shadow: 0px 0px 110px -30px rgba(0,0,0,0.6);
+}
+
+.content{
+  background-color: #ffffff;
+  margin: 0;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 15px;
+  -webkit-box-shadow: 0px 0px 30px -10px rgba(0,0,0,0.4);
+  -moz-box-shadow: 0px 0px 30px -10px rgba(0,0,0,0.4);
+  box-shadow: 0px 0px 30px -10px rgba(0,0,0,0.4);
+}
+input{
+    width: 80%;
+    height: 40px;
+    font-size: 25px;
+    font-family: 'Knewave', cursive;
+}
+button{
+  font-family: 'Knewave', cursive;
+    width: 15%;
+    height: 40px;
+    font-size: 25px;
+}
+.twit{
+  font-family: 'Knewave', cursive;
+}
