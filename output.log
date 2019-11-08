@@ -1,0 +1,8 @@
+nohup: ignoring input
+[0mGET / [36m304 [0m5.917 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m0.790 ms - -[0m
+[0mGET /javascripts/script.js [36m304 [0m0.289 ms - -[0m
+[0mGET /javascripts/vue.js [36m304 [0m0.301 ms - -[0m
+[0mGET /javascripts/moment.min.js [36m304 [0m0.215 ms - -[0m
+get posts...
+[0mGET /posts [32m200 [0m5.930 ms - 2[0m

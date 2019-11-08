@@ -10,37 +10,103 @@
 <body>
   <div class="topbar" style="display: flex; justify-content: space-evenly">
     <h1>InstaTwit</h1>
-    <h2>The social media network for those who don't need 280 characters</h2>
+    <h2>The social network for those who don't need 280 characters</h2>
   </div>
-  
-  
+
+
   <div style="display:flex">
 
-    <div class="container">
-      <div id="app" style="display:flex;margin: auto; height:100%; flex-direction: column">
+    <div class="container" style="display:flex">
+      <div id="app" style="display:flex;margin: auto; height:100%; flex-direction: column; flex:1">
 
 
-        <div id="userinput" class="content">
-          <h3>Tell the world what it needs to hear</h3><br>
-          <div style="display:flex; justify-content:space-between;margin-bottom:1em">
-          <input type="text" v-model="userposttext">
-          <button type="submit" v-on:click.prevent="makeuserpost">Twit!</button>
+
+        <div v-show="loggedin">
+          <div id="userinput" class="content">
+            <h3>Tell the world what it needs to hear in 28 characters. You can use {{remainingchars}} more characters.</h3><br>
+            <div style="display:flex; justify-content:space-between;margin-bottom:1em">
+              <input type="text" v-model="userposttext" maxlength="28">
+              <button type="submit" v-on:click.prevent="makeuserpost">InstaTwit!</button>
+            </div>
+          </div>
+          <br><br>
+
+          <div id="postsdisplay">
+
+            <div v-for="item in posts" class="post">
+              <div class="content">
+                <div class="postinfo">
+                  <div style="display:flex">
+                  <p style="font-size:larger">Name: {{item.name}} </p>
+                  <p style="font-size:small">Posted {{item.ago}}</p>
+                  </div>
+                  <p>{{item.date}}</p>
+                </div>
+                <div class="posttext">
+                <p class="twit"> {{item.text}} </p>
+                </div>
+              </div>
+            </div>
+
+
           </div>
         </div>
-        <br><br>
+        <div v-if="!loggedin" style="flex:1; margin-bottom:0; display:flex" class="content login">
+          <div v-if="createaccount" style="flex-direction:column">
 
-        <div id="postsdisplay">
-
-          <div v-for="item in posts" class="content">
-            <p>Name: {{item.name}} </p>
-            <p>{{item.date}}</p>
-            <p>Posted {{item.ago}}</p>
-            <p class="twit"> {{item.text}} </p>
+            <div>
+              <h3 style="margin:auto;">Please enter a Username and Password:</h3>
+            </div>
+            <div style="flex-direction:column;display:block;margin:auto">
+              <p>Username: </p>
+              <input type="text" v-model="usernameinput">
+              <p>Password: (Do not use a real password)</p>
+              <input type="text" v-model="passwordinput">
+            </div>
+            <div>
+              <div style="margin:auto">
+                <input type="button" class="bigbutton" v-on:click.prevent="createorlog" value="Back">
+                <input type="button" class="bigbutton" v-on:click.prevent="createAccount" value="Create Account">
+              </div>
+            </div>
           </div>
-
-
+          <div v-else-if="login" style="flex-direction:column">
+            <div>
+              <h3 style="margin:auto;">Please log in:</h3>
+            </div>
+            <div style="flex-direction:column;display:block;margin:auto">
+              <p>Username:</p>
+              <input type="text" v-model="usernameinput">
+              <p>Password:</p>
+              <input type="text" v-model="passwordinput">
+            </div>
+            <div>
+              <div style="margin:auto">
+                <input type="button" class="bigbutton" v-on:click.prevent="createorlog" value="Back">
+                <input type="button" class="bigbutton" v-on:click.prevent="checkCredentials" value="Log In">
+              </div>
+            </div>
+          </div>
+          <div v-else-if="accountcreated" style="flex-direction:column">
+            <div>
+              <h3 style="margin:auto;">Account created successfully!</h3>
+            </div>
+            <div style="margin:auto">
+              <input type="button" class="bigbutton" value="Continue" v-on:click.prevent="createorlog">
+            </div>
+          </div>
+          <div v-else>
+            <div style="display:flex;flex-direction:column;text-align:center">
+              <div>
+                <h3 style="margin:auto">Please create an account or log in:</h3>
+              </div>
+              <div style="display:flex;justify-content: center">
+                <input class="bigbutton" type="button" value="Log In" v-on:click.prevent="showlogin">
+                <input class="bigbutton" type="button" value="Create Account" v-on:click.prevent="showcreateaccount">
+              </div>
+            </div>
+          </div>
         </div>
-
 
 
 
@@ -54,7 +120,7 @@
       </div>
     </div>
   </div>
-  
+
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
   <script src="javascripts/script.js"></script>
   <script src="javascripts/vue.js"></script>

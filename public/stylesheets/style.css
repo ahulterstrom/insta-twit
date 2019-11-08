@@ -59,18 +59,94 @@ h2{
   -moz-box-shadow: 0px 0px 30px -10px rgba(0,0,0,0.4);
   box-shadow: 0px 0px 30px -10px rgba(0,0,0,0.4);
 }
-input{
+#postsdisplay{
+  display: flex;
+  flex-direction: column-reverse;
+}
+.post{
+  animation-duration: 1s;
+  animation-name: slidein;
+  overflow: hidden;
+}
+
+@keyframes slidein {
+  from {
+    height: 0;
+    /*padding: 1 15px;*/
+    margin-bottom: 1;
+  }
+  99%{
+    height: 162px;
+    /*padding: 15px 15px;*/
+    margin-bottom: 15px;
+  }
+  to {
+    height: auto;
+    /*padding: 15px;*/
+    margin-bottom: 15px;
+  }
+}
+.postinfo{
+  background-color: #eae4ff;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+.postinfo p{
+  margin: 10px 25px;
+  margin-left: 0px;
+  align-self: baseline;
+}
+.posttext{
+  padding:15px;
+}
+.post .content{
+  padding: 0;
+  overflow: hidden;
+}
+#userinput input{
     width: 80%;
     height: 40px;
     font-size: 25px;
     font-family: 'Knewave', cursive;
 }
-button{
+#userinput button{
   font-family: 'Knewave', cursive;
     width: 15%;
     height: 40px;
     font-size: 25px;
 }
-.twit{
+.twitfont{
   font-family: 'Knewave', cursive;
+}
+.login div{
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+.bigbutton {
+	box-shadow: 0px 1px 0px 0px #f0f7fa;
+background: rgb(127,67,166);
+background: linear-gradient(180deg, rgba(127,67,166,1) 0%, rgba(94,97,255,1) 100%);
+	border-radius:6px;
+	border:1px solid rgba(127,67,166,1);
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #5b6178;
+	width: 200px;
+	height: 50px;
+	margin: 20px;
+}
+.bigbutton:hover {
+background: rgb(127,67,166);
+background: linear-gradient(0deg, rgba(127,67,166,1) 0%, rgba(94,97,255,1) 100%);
+}
+.bigbutton:active {
+	position:relative;
+	top:1px;
 }
